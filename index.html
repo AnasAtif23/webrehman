@@ -1,0 +1,533 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Responsive Navbar</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav {
+                width: 100%;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f8f9fa;
+            }
+
+            .left, .right {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .left {
+                width: 40%;
+                gap: 40px;
+            }
+
+            .right {
+                width: 50%;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+                position: relative; 
+                font-weight: normal; 
+                transition: color 0.3s ease, font-weight 0.3s ease; 
+            }
+
+            a::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background: black;
+                bottom: -5px;
+                left: 0;
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+            }
+
+            a:hover {
+                color: black; 
+                font-weight: bold; 
+            }
+
+            a:hover::after {
+                transform: scaleX(1);
+            }
+
+            #img {
+                position: relative; 
+                width: 100%;
+                max-width: 1600px; 
+                height: 500px; 
+                margin: 10px auto; 
+                overflow: hidden; 
+            }
+
+            #img img {
+                width: 100%;
+                height: 100%; 
+                object-fit: cover; 
+                transition: transform 0.5s ease; 
+            }
+
+            #img:hover img {
+                transform: scale(1.1); 
+            }
+
+            .overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: white;
+                padding: 10px;
+                width: 90%; 
+            }
+
+            .btn-custom {
+                background: transparent; 
+                border: 2px solid white; 
+                color: black; 
+            }
+
+            .btn-custom:hover {
+                background: rgba(255, 255, 255, 0.2); 
+            }
+
+            .card {
+                width: 200px;
+                margin: 10px;
+                box-shadow: none;
+            }
+
+            .card-img-top {
+                height: 300px;
+                object-fit: cover;
+            }
+
+            .card-body {
+                padding: 10px;
+            }
+
+            p {
+                margin-top: 30px; 
+                width: 90%;
+                font-size: 16px;
+                line-height: 1.5;
+                color: #333;
+            }
+
+            @media (max-width: 992px) {
+                .nav {
+                    flex-direction: column; 
+                    align-items: flex-start; 
+                    height: auto; 
+                }
+                .left, .right {
+                    width: 100%; 
+                    justify-content: space-around; 
+                    flex-wrap: wrap; 
+                }
+                .left {
+                    gap: 20px; 
+                }
+                .card {
+                    width: 150px;
+                }
+                .card-img-top {
+                    height: 250px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .left, .right {
+                    flex-direction: column; 
+                    align-items: center; 
+                }
+                .card {
+                    width: 350px;
+                }
+                .card-img-top {
+                    height: 200px;
+                }
+            }
+
+            #strong {
+                font-size: 40px;
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .container {
+                display: flex;
+                margin-left: 300px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+            .description {
+                flex: 1; 
+                padding: 20px;
+                margin-right: 10px;
+            }
+
+            .image {
+                flex: 1;
+                max-width: 100%;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            @media (max-width: 900px) {
+                .container {
+                    width: 100%;
+                    margin-left: 0;
+                    flex-direction: column;
+                }
+
+
+
+
+                .description {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+            @media (max-width: 900px) {
+                .container {
+                    width: 100%;
+                    margin-left: 0;
+                    flex-direction: column;
+                }}
+
+            .site-footer {
+  background-color: #26272b;
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #737373;
+}
+
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
+}
+
+.site-footer hr.small {
+  margin: 20px 0;
+}
+
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.site-footer a {
+  color: #737373;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+.footer-links {
+  padding-left: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  display: block;
+}
+
+.footer-links a {
+  color: #737373;
+}
+
+.footer-links a:active,
+.footer-links a:focus,
+.footer-links a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+.footer-links.inline li {
+  display: inline-block;
+}
+
+.site-footer .social-icons {
+  text-align: right;
+}
+
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  margin-right: 0;
+  border-radius: 100%;
+  background-color: #33353d;
+}
+
+.copyright-text {
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .site-footer [class^=col-] {
+    margin-bottom: 30px;
+  }
+
+  .site-footer .social-icons {
+    text-align: center; /* Center social icons on smaller screens */
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+
+  .site-footer .copyright-text,
+  .site-footer .social-icons {
+    text-align: center;
+  }
+
+  .footer-links li {
+    text-align: center; /* Center text for footer links */
+  }
+  
+  .social-icons li.title {
+    display: block;
+    margin-right: 0;
+    font-weight: 600;
+  }
+}
+
+.social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.social-icons li.title {
+  margin-right: 15px;
+  text-transform: uppercase;
+  color: #96a2b2;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.social-icons a {
+  background-color: #eceeef;
+  color: #818a91;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 44px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 100%;
+  transition: all 0.2s linear;
+}
+
+.social-icons a:active,
+.social-icons a:focus,
+.social-icons a:hover {
+  color: #fff;
+  background-color: #29aafe;
+}
+
+.social-icons.size-sm a {
+  line-height: 34px;
+  height: 34px;
+  width: 34px;
+  font-size: 14px;
+}
+
+.social-icons a.facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+
+.social-icons a.linkedin:hover {
+  background-color: #007bb6;
+}
+
+.social-icons a.dribbble:hover {
+  background-color: #ea4c89;
+}
+
+@media (max-width: 767px) {
+  .social-icons li.title {
+    display: block;
+    margin-right: 0;
+    font-weight: 600;
+    color: white;
+  }
+}
+
+        </style>
+    </head>
+    <body>
+
+    <div class="nav">
+        <div class="left">
+            <a href="#">Company</a>
+            <a href="#">Innovation</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Careers</a>
+            <a href="#">Audi in sport</a>
+        </div>
+        <div class="right">
+            <a href="#">Read more</a>
+        </div>
+    </div>
+
+    <div id="img">
+        <img src="https://media.istockphoto.com/id/1414246009/photo/generic-red-electric-sports-car-driving-fast-around-corner-on-wet-racetrack.jpg?s=2048x2048&w=is&k=20&c=yV-lwOazmKUii4qc94-t7cH7rhw_8ntupj8j8duGhL8=" alt="Audi A6 Sportback e-tron">
+        <div class="overlay">
+            <h2>Audi A6 Sportback e-tron</h2>
+            <h6>The most aerodynamic Audi ever</h6>
+            <button class="btn btn-custom mt-4">Click Me</button>
+        </div>
+    </div>
+
+    <center>
+        <p>A6 Sportback e-tron: Power consumption (combined) in kWh/100 km: 15.9–14.0 CO₂ emissions (combined) in g/km: 0 CO₂ emission class: A</p>
+    </center>
+
+    <center>
+        <h5 id="strong">Current topics from the world of Audi</h5>
+    </center>
+
+    <div class="card-group" style="margin: 50px auto; max-width: 1500px;">
+      <div class="card">
+        <img src="https://www.audi.com/content/dam/gbp2/sustainability/environment-and-resources/circular-economy/exchange-2-0/16x9_circular-economy_NBZ0423.jpg?imwidth=477&imdensity=1" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">The circular economy in practice: Audi Genuine exchange parts are a resource-saving alternative to new parts – offering the best possible quality in accordance with Audi standards.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.audi.com/content/dam/gbp2/innovation/product-innovation/design/audi-q5-wheel-design/1920x1080_53b_2_01.jpg?imwidth=477&imdensity=1" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">“The wheels make the car” - The designer Andreas Valencia Pollex explains the wheel design of the new Audi Q5.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.audi.com/content/dam/gbp2/innovation/product-innovation/design/audi-a6-e-tron-exterieur-design/1920x1080_S1310533.jpg?imwidth=477&imdensity=1" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Audi A6 e-tron: from concept car to series production - Two exterior designers from Audi explain how the Audi A6 e-tron concept car became a production vehicle.</p>
+        </div>
+      </div>
+    </div>
+
+        <div class="container">
+            <div class="description">
+                <h2>Description Title</h2>
+                <p>Your description goes here. This is where you can add more information about the image or content.</p>
+                <a href="#" class="btn-custom">Learn More</a>
+            </div>
+            <div class="image">
+                <img src="https://www.audi.com/content/dam/gbp2/2024/Homepage/1920x1080_nachhaltigkeit_A6e_2023_5921.jpg?imwidth=792&imdensity=1" alt="Description of image">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="image">
+                <img src="https://www.audi.com/content/dam/gbp2/careers/Working-at-Audi/Overview/1920x1080_T4_Tiantian_DSC09637.jpg?imwidth=792&imdensity=1" alt="Description of image">
+            </div>
+            <div class="description">
+                <h2>Description Title 2</h2>
+                <p>Your description goes here for the second column. More details can be added here.</p>
+                <a href="#" class="btn-custom">Learn More</a>
+            </div>
+        </div>
+
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p style="color: white;" class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="
+                #">C</a></li>
+              <li><a href="#">UI Design</a></li>
+              <li><a href="#">PHP</a></li>
+              <li><a href="#">Java</a></li>
+              <li><a href="#">Android</a></li>
+              <li><a href="#">Templates</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#/">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Contribute</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p style="color: white;" class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+         <a href="#">Scanfcode</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+    </html>
